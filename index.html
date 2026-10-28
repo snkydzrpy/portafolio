@@ -5,32 +5,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alan Caicedo — Portafolio profesional</title>
   <meta name="description" content="Portafolio profesional de Alan Sneyder Caicedo Díaz: proyectos de datos e inteligencia artificial, código y sistemas en producción.">
-  <meta property="og:title" content="Alan Caicedo — Ensayos y proyectos">
-  <meta property="og:description" content="Ensayos sobre tecnología, atención y poder. Proyectos de datos e inteligencia artificial.">
+  <meta name="theme-color" content="#07060a">
+  <meta property="og:title" content="Alan Caicedo — Portafolio profesional">
+  <meta property="og:description" content="Sistemas de datos e inteligencia artificial, código abierto y auditoría de trazabilidad. Cali, Colombia.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Alan Caicedo — Portafolio profesional">
   <link rel="stylesheet" href="styles.css">
+  <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
 </head>
 <body>
+
+  <div class="aurora" aria-hidden="true">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <span class="blob b3"></span>
+  </div>
+  <div class="spotlight" aria-hidden="true"></div>
 
   <header class="site">
     <div class="wrap">
       <a class="brand" href="index.html">Alan Caicedo</a>
       <nav>
         <a href="#trabajo">Trabajo</a>
+        <a href="#experiencia">Experiencia</a>
+        <a href="#formacion">Formación</a>
         <a href="#sobre">Sobre mí</a>
         <a href="#contacto">Contacto</a>
       </nav>
     </div>
+    <div class="progress"><span id="progressBar"></span></div>
   </header>
 
   <main class="wrap">
 
-    <section class="hero" style="border-top: none;">
-      <p class="kicker">Alan Sneyder Caicedo Díaz · Cali, Colombia</p>
-      <h1>Escribo sobre tecnología, atención y poder. También construyo sistemas de IA.</h1>
-      <p class="lede">Portafolio de proyectos de datos e inteligencia artificial. Programo en Python; construyo herramientas reproducibles y transparentes sobre sus límites.</p>
-      <a class="cta" href="#trabajo">Ver trabajo</a>
+    <section class="hero">
+      <p class="kicker reveal">Alan Sneyder Caicedo Díaz · Cali, Colombia</p>
+      <h1 class="reveal">Construyo sistemas de datos e IA <span class="grad">que se pueden auditar.</span></h1>
+      <p class="lede reveal">Tengo 17 años. Programo en Python y construyo herramientas reproducibles sobre datos públicos: siniestralidad vial, bioacústica y sistemas de IA en producción. Cada proyecto incluye sus límites y su trazabilidad.</p>
+      <div class="hero-actions reveal">
+        <a class="cta" href="#trabajo">Ver trabajo</a>
+        <a class="cta secondary" href="#contacto">Contacto</a>
+      </div>
+      <div class="stats reveal">
+        <div>
+          <strong data-count="51236" data-format="es">51.236</strong>
+          <span>Registros de siniestralidad analizados</span>
+        </div>
+        <div>
+          <strong data-count="9261" data-format="es">9.261</strong>
+          <span>Cruces viales evaluados</span>
+        </div>
+        <div>
+          <strong data-count="16">16</strong>
+          <span>Pruebas automatizadas</span>
+        </div>
+      </div>
     </section>
 
     <section id="trabajo">
@@ -38,60 +67,103 @@
 
       <div class="work-grid">
 
-        <a class="work-card" href="https://github.com/snkydzrpy/ciclorotocali">
-          <div class="meta">Proyecto · Hackathon · Público</div>
+        <article class="work-card reveal">
+          <div class="meta">Proyecto · Datos abiertos · Público</div>
           <h3>CicloRoto Vial</h3>
-          <p>Análisis de siniestralidad vial en Cali: 51,236 registros (2016–2025), ranking con Gamma–Poisson y auditoría de trazabilidad. Streamlit, Python.</p>
-        </a>
+          <p>Análisis de siniestralidad vial en Cali: 51.236 registros (2016–2025), ranking de cruces críticos con Gamma–Poisson e intervalos de confianza del 95%. Incluye auditoría de trazabilidad de reportes ciudadanos.</p>
+          <div class="card-links">
+            <a class="card-link" href="https://github.com/snkydzrpy/ciclorotocali">Repositorio</a>
+            <a class="card-link" href="https://youtu.be/qj5ZTFfcUy8">Video demo</a>
+          </div>
+        </article>
 
-
-
-        <article class="work-card">
-          <div class="meta">Proyecto · Lidarit (NDA)</div>
+        <article class="work-card is-static reveal">
+          <div class="meta">Proyecto · NDA</div>
           <h3>Meeting AI Agent</h3>
           <p>Sistema en producción para transcripción de audio en vivo, diarización de speakers y reportes automáticos. Python, AWS y APIs de LLM.</p>
         </article>
 
-        <a class="work-card" href="https://birds-ai-cali.web.app/">
+        <a class="work-card reveal" href="https://birds-ai-cali.web.app/">
           <div class="meta">Proyecto · IA aplicada · En vivo</div>
           <h3>BirdsAI</h3>
-          <p>Monitoreo acústico e identificación de aves. App web con Firebase + worker Python/Docker + BirdNET. Prototipo académico (SENA).</p>
+          <p>Monitoreo acústico e identificación de aves. App web con Firebase + worker Python/Docker + BirdNET, con CI/CD en GitHub Actions. Proyecto de base tecnológica (SENA / Tecnoparque).</p>
+          <div class="card-links">
+            <span class="card-link">Abrir app</span>
+          </div>
         </a>
 
-        <a class="work-card" href="https://github.com/snkydzrpy/Estudios-de-casos-tecnicos-e-informes-de-auditoria-de-sistemas-de-IA-en-produccion-bajo-entornos-NDA">
+        <a class="work-card reveal" href="https://github.com/snkydzrpy/Estudios-de-casos-tecnicos-e-informes-de-auditoria-de-sistemas-de-IA-en-produccion-bajo-entornos-NDA">
           <div class="meta">Repositorio · Público</div>
           <h3>Estudios de casos técnicos</h3>
           <p>Auditoría de sistemas de IA en producción bajo entornos NDA. Casos, hallazgos y criterios de evaluación.</p>
+          <div class="card-links">
+            <span class="card-link">Repositorio</span>
+          </div>
         </a>
 
       </div>
     </section>
 
+    <section id="experiencia">
+      <h2>Experiencia</h2>
+      <ol class="timeline">
+        <li class="reveal">
+          <div class="when">Abr 2026 — Oct 2026</div>
+          <h3>Desarrollador</h3>
+          <span class="org">SENA · Tecnoparque Nodo Valle</span>
+          <p>Desarrollo de BirdsAI: arquitectura desacoplada entre frontend, servicios Firebase y un worker de IA. Autenticación, reglas de seguridad, CI/CD con GitHub Actions y procesamiento asíncrono de audio con FFmpeg y BirdNET.</p>
+        </li>
+        <li class="reveal">
+          <div class="when">Sep 2025 — Ene 2026</div>
+          <h3>Programador full stack</h3>
+          <span class="org">LiDARit · Colombia</span>
+          <p>Backend y soporte de frontend en aplicaciones con IA. Servicios AWS (S3, Lambda, DynamoDB, CloudFront, API Gateway), procesamiento de datos con Python (Pandas, NumPy) y transcripción en tiempo real con Deepgram y GPT-4o-mini. Proyectos: MAX y Meeting AI Agent.</p>
+        </li>
+        <li class="reveal">
+          <div class="when">Ago 2025 — Nov 2025</div>
+          <h3>Monitor académico</h3>
+          <span class="org">SENA · Técnico en Procesamiento de Datos para Modelos de IA</span>
+          <p>Seleccionado por el Comité de Evaluación y Seguimiento para la II Convocatoria 2025. Acompañamiento a aprendices en fundamentos de IA, Python, programación y análisis de datos.</p>
+        </li>
+      </ol>
+    </section>
 
     <section id="reconocimientos">
       <h2>Reconocimientos</h2>
       <ul class="awards">
-        <li><strong>SENA — Día de los Mejores 2025.</strong> Desempeño destacado en formación técnica de inteligencia artificial.</li>
-        <li><strong>SENA — Monitoría académica 2025.</strong> Machine Learning, estadística y modelado de datos.</li>
-        <li><strong>Centro de Innovación YAWA.</strong> Expositor de proyectos de IA y analítica de datos.</li>
+        <li class="reveal"><strong>Aprendiz Destacado SENA — Técnico PDIA.</strong> Distinción en el Día de los Mejores 2025 por desempeño en formación técnica de inteligencia artificial.</li>
+        <li class="reveal"><strong>SENA — Monitoría académica 2025.</strong> Machine Learning, estadística y modelado de datos.</li>
+        <li class="reveal"><strong>Centro de Innovación YAWA y AI Salon Cali.</strong> Expositor de proyectos de IA y analítica de datos.</li>
+      </ul>
+    </section>
+
+    <section id="formacion">
+      <h2>Formación y certificaciones</h2>
+      <ul class="awards">
+        <li class="reveal"><strong>SENA — Técnico en Procesamiento de Datos para Modelos de IA.</strong> Título otorgado el 19/10/2026 (CEAI, Regional Valle), acta de grado 102987212. Verificable en certificados.sena.edu.co.</li>
+        <li class="reveal"><strong>SENA / ASTIN Tecnoparque Nodo Valle — Proyecto de base tecnológica (PBT).</strong> «Caracterización inteligente de entornos urbanos en Cali mediante identificación acústica del canto de aves» (código P2025-034320-18435). Acompañamiento: 09/02/2026 – 10/10/2026.</li>
+        <li class="reveal"><strong>Excel intermedio.</strong> Certificación obtenida el 28/10/2026.</li>
+        <li class="reveal"><strong>SENA — Variables y Estructuras de Control en Python.</strong> Curso de 48 horas, aprobado con equivalencia 4.5 (dic 2025).</li>
+        <li class="reveal"><strong>SENA — Acogida Aprendices.</strong> Participación, 4 horas (mar 2025).</li>
       </ul>
     </section>
 
     <section id="sobre" class="about">
       <h2>Sobre mí</h2>
-      <p>Tengo 17 años y vivo en Cali, Colombia. Programo en Python y escribo sobre tecnología, atención y poder.</p>
-      <p>Mi nombre completo es Alan Sneyder Caicedo Díaz.</p>
-      <p>He participado en proyectos de datos e inteligencia artificial, algunos bajo NDA. En 2025 recibí un reconocimiento del SENA en el Día de los Mejores y fui expositor en el Centro de Innovación YAWA.</p>
-      <p>Este sitio es el archivo de lo que pienso en serio, no el feed de lo que pienso rápido.</p>
+      <p class="reveal">Tengo 17 años y vivo en Cali, Colombia. Programo en Python y construyo sistemas de datos e inteligencia artificial: herramientas auditables, con pruebas y con límites explícitos.</p>
+      <p class="reveal">Mi nombre completo es Alan Sneyder Caicedo Díaz. Trabajé en LiDARit (bajo NDA) y en el Tecnoparque Nodo Valle del SENA. En 2025 recibí la distinción de Aprendiz Destacado y fui monitor académico del programa de IA.</p>
+      <p class="reveal quote">No me interesa la tecnología que impresiona. Me interesa la que se puede verificar.</p>
 
-      <ul class="skills">
+      <ul class="skills reveal">
         <li>Python</li>
         <li>SQL</li>
+        <li>Pandas</li>
         <li>PyTorch</li>
         <li>TensorFlow</li>
         <li>scikit-learn</li>
         <li>AWS</li>
-        <li>Pandas</li>
+        <li>Firebase</li>
+        <li>Docker</li>
         <li>ETL</li>
       </ul>
     </section>
@@ -99,10 +171,10 @@
     <section id="contacto">
       <h2>Contacto</h2>
       <ul class="links">
-        <li><span>GitHub</span><a href="https://github.com/snkydzrpy">snkydzrpy</a></li>
-        <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/alan-sneyder-caicedo-diaz/">Alan Sneyder Caicedo Díaz</a></li>
-        <li><span>Email</span><a href="mailto:alansneydercaicedodiaz@gmail.com">alansneydercaicedodiaz@gmail.com</a></li>
-        <li><span>Teléfono</span><a href="tel:+573332746127">3332746127</a></li>
+        <li class="reveal"><span>GitHub</span><a href="https://github.com/snkydzrpy">snkydzrpy</a></li>
+        <li class="reveal"><span>LinkedIn</span><a href="https://www.linkedin.com/in/alan-sneyder-caicedo-diaz/">Alan Sneyder Caicedo Díaz</a></li>
+        <li class="reveal"><span>Email</span><a href="mailto:alansneydercaicedodiaz@gmail.com">alansneydercaicedodiaz@gmail.com</a></li>
+        <li class="reveal"><span>Teléfono</span><a href="tel:+573332746127">333 274 6127</a></li>
       </ul>
     </section>
 
@@ -110,9 +182,88 @@
 
   <footer class="site">
     <div class="wrap">
-      © 2026 Alan Sneyder Caicedo Díaz. Todos los textos son de mi autoría.
+      <span>© 2026 Alan Sneyder Caicedo Díaz</span>
+      <span>Cali, Colombia</span>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var progressBar = document.getElementById("progressBar");
+      var header = document.querySelector("header.site");
+
+      function onScroll() {
+        var h = document.documentElement;
+        var max = h.scrollHeight - h.clientHeight;
+        var p = max > 0 ? h.scrollTop / max : 0;
+        if (progressBar) progressBar.style.transform = "scaleX(" + p + ")";
+        if (header) header.classList.toggle("scrolled", h.scrollTop > 24);
+      }
+
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      // Reveal on scroll
+      var items = document.querySelectorAll(".reveal");
+      if (reduced || !("IntersectionObserver" in window)) {
+        items.forEach(function (el) { el.classList.add("in"); });
+      } else {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in");
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+        items.forEach(function (el) { io.observe(el); });
+      }
+
+      // Pointer spotlight
+      var spot = document.querySelector(".spotlight");
+      if (spot && !reduced && window.matchMedia("(hover: hover)").matches) {
+        var raf = null;
+        window.addEventListener("mousemove", function (e) {
+          if (raf) return;
+          raf = requestAnimationFrame(function () {
+            spot.style.setProperty("--mx", e.clientX + "px");
+            spot.style.setProperty("--my", e.clientY + "px");
+            raf = null;
+          });
+        }, { passive: true });
+      }
+
+      // Count-up stats
+      var counters = document.querySelectorAll("[data-count]");
+      function animate(el) {
+        var target = parseInt(el.getAttribute("data-count"), 10);
+        var fmt = el.getAttribute("data-format") === "es";
+        var start = null;
+        var dur = 1400;
+        function step(ts) {
+          if (!start) start = ts;
+          var t = Math.min((ts - start) / dur, 1);
+          var eased = 1 - Math.pow(1 - t, 3);
+          var val = Math.round(target * eased);
+          el.textContent = fmt ? val.toLocaleString("es-CO") : String(val);
+          if (t < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+      if (!reduced && "IntersectionObserver" in window) {
+        var co = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              animate(entry.target);
+              co.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.6 });
+        counters.forEach(function (el) { co.observe(el); });
+      }
+    })();
+  </script>
 
 </body>
 </html>

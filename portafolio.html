@@ -5,18 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alan Caicedo â€” Portafolio profesional</title>
   <meta name="description" content="Portafolio profesional de Alan Sneyder Caicedo DÃ­az: proyectos de datos e inteligencia artificial, cÃ³digo y sistemas en producciÃ³n.">
-  <meta property="og:title" content="Alan Caicedo â€” Ensayos y proyectos">
-  <meta property="og:description" content="Ensayos sobre tecnologÃ­a, atenciÃ³n y poder. Proyectos de datos e inteligencia artificial.">
+  <meta name="theme-color" content="#07060a">
+  <meta property="og:title" content="Alan Caicedo â€” Portafolio profesional">
+  <meta property="og:description" content="Sistemas de datos e inteligencia artificial, cÃ³digo abierto y auditorÃ­a de trazabilidad. Cali, Colombia.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Alan Caicedo â€” Portafolio profesional">
   <style>
 :root {
-  --bg: #0c0c0d;
-  --surface: #141416;
-  --text: #e9e6e1;
-  --muted: #9a958d;
-  --accent: #e0b04a;
-  --line: #26262a;
+  --bg: #07060a;
+  --bg-soft: #0b0910;
+  --surface: rgba(23, 18, 33, 0.72);
+  --surface-2: rgba(31, 24, 45, 0.6);
+  --text: #ece8f4;
+  --muted: #9d95ae;
+  --dim: #6e6680;
+  --purple: #a855f7;
+  --purple-soft: #8b5cf6;
+  --violet-deep: #4c1d95;
+  --gold: #e3b95f;
+  --gold-bright: #f4d68a;
+  --gold-deep: #b8892f;
+  --line: rgba(168, 85, 247, 0.16);
+  --line-strong: rgba(168, 85, 247, 0.34);
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, Consolas, monospace;
 }
 
 * {
@@ -25,191 +38,626 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 96px;
 }
 
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--sans);
   font-size: 18px;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 ::selection {
-  background: var(--accent);
-  color: #0c0c0d;
+  background: var(--gold);
+  color: #0b0910;
+}
+
+/* ---------- Ambient background ---------- */
+
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.aurora .blob {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.55;
+  will-change: transform;
+}
+
+.aurora .b1 {
+  width: 46vw;
+  height: 46vw;
+  min-width: 320px;
+  min-height: 320px;
+  top: -12vw;
+  left: -8vw;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.55), transparent 68%);
+  animation: drift1 26s ease-in-out infinite;
+}
+
+.aurora .b2 {
+  width: 40vw;
+  height: 40vw;
+  min-width: 280px;
+  min-height: 280px;
+  bottom: -14vw;
+  right: -10vw;
+  background: radial-gradient(circle, rgba(227, 185, 95, 0.28), transparent 68%);
+  animation: drift2 32s ease-in-out infinite;
+}
+
+.aurora .b3 {
+  width: 34vw;
+  height: 34vw;
+  min-width: 240px;
+  min-height: 240px;
+  top: 42%;
+  left: 46%;
+  background: radial-gradient(circle, rgba(76, 29, 149, 0.5), transparent 70%);
+  animation: drift3 38s ease-in-out infinite;
+}
+
+@keyframes drift1 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(6vw, 5vh, 0) scale(1.12); }
+}
+
+@keyframes drift2 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1.05); }
+  50% { transform: translate3d(-5vw, -6vh, 0) scale(0.95); }
+}
+
+@keyframes drift3 {
+  0%, 100% { transform: translate3d(-4vw, 0, 0) scale(1); }
+  50% { transform: translate3d(5vw, -5vh, 0) scale(1.15); }
+}
+
+.spotlight {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 20%),
+    rgba(168, 85, 247, 0.13),
+    transparent 72%
+  );
+  transition: opacity 0.4s ease;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+header.site,
+main,
+footer.site {
+  position: relative;
+  z-index: 1;
 }
 
 a {
-  color: var(--accent);
+  color: var(--gold);
   text-decoration: none;
   text-underline-offset: 3px;
+  transition: color 0.25s ease;
 }
 
 a:hover {
-  text-decoration: underline;
+  color: var(--gold-bright);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 .wrap {
   width: 100%;
-  max-width: 720px;
+  max-width: 860px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 28px;
 }
 
+/* ---------- Header ---------- */
+
 header.site {
-  padding: 28px 0;
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: rgba(7, 6, 10, 0.6);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
   border-bottom: 1px solid var(--line);
+  transition: background 0.4s ease, border-color 0.4s ease;
+}
+
+header.site.scrolled {
+  background: rgba(7, 6, 10, 0.88);
+  border-bottom-color: var(--line-strong);
 }
 
 header.site .wrap {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 18px;
   flex-wrap: wrap;
+  padding-top: 18px;
+  padding-bottom: 18px;
 }
 
 .brand {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.15rem;
+  font-family: var(--serif);
+  font-size: 1.18rem;
   letter-spacing: 0.01em;
   color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--purple));
+  box-shadow: 0 0 12px rgba(227, 185, 95, 0.8);
+}
+
+.brand:hover {
+  color: var(--gold-bright);
+  text-decoration: none;
 }
 
 nav {
   display: flex;
-  gap: 20px;
-  font-size: 0.9rem;
+  gap: 22px;
+  flex-wrap: wrap;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 nav a {
+  position: relative;
   color: var(--muted);
+  padding: 4px 0;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold), var(--purple));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 nav a:hover {
   color: var(--text);
+  text-decoration: none;
 }
 
+nav a:hover::after {
+  transform: scaleX(1);
+}
+
+.progress {
+  height: 2px;
+  width: 100%;
+  background: transparent;
+}
+
+.progress span {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--purple), var(--gold));
+  box-shadow: 0 0 10px rgba(227, 185, 95, 0.55);
+}
+
+/* ---------- Hero ---------- */
+
 .hero {
-  padding: 96px 0 72px;
+  padding: 112px 0 76px;
+  border-top: none;
 }
 
 .hero .kicker {
-  color: var(--accent);
-  font-size: 0.78rem;
-  letter-spacing: 0.14em;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--gold);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  margin: 0 0 18px;
+  margin: 0 0 26px;
+  padding: 6px 14px;
+  border: 1px solid rgba(227, 185, 95, 0.22);
+  border-radius: 999px;
+  background: rgba(227, 185, 95, 0.05);
+}
+
+.hero .kicker::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 10px var(--gold);
+  animation: pulse 2.6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.8); }
 }
 
 .hero h1 {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(2.2rem, 6vw, 3.6rem);
-  line-height: 1.08;
-  letter-spacing: -0.02em;
-  margin: 0 0 24px;
+  font-size: clamp(2.3rem, 6.4vw, 4rem);
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  margin: 0 0 28px;
+  max-width: 17ch;
+}
+
+.grad {
+  background: linear-gradient(100deg, var(--gold-bright) 0%, var(--gold) 35%, var(--purple) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% 200%;
+  animation: shimmer 9s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .hero p.lede {
   color: var(--muted);
-  font-size: 1.1rem;
-  max-width: 34em;
-  margin: 0 0 32px;
+  font-size: 1.08rem;
+  max-width: 46ch;
+  margin: 0 0 34px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .cta {
-  display: inline-block;
-  border: 1px solid var(--accent);
-  color: var(--accent);
-  padding: 10px 18px;
-  font-size: 0.9rem;
-  border-radius: 2px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  overflow: hidden;
+  border: 1px solid var(--gold);
+  color: var(--gold-bright);
+  padding: 12px 22px;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  background: rgba(227, 185, 95, 0.06);
+  transition: color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.cta::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-18deg);
+  transition: left 0.6s ease;
 }
 
 .cta:hover {
-  background: var(--accent);
-  color: #0c0c0d;
+  background: var(--gold);
+  color: #0b0910;
   text-decoration: none;
+  box-shadow: 0 8px 30px rgba(227, 185, 95, 0.28);
+  transform: translateY(-2px);
+}
+
+.cta:hover::after {
+  left: 120%;
 }
 
 .cta.secondary {
-  border-color: var(--line);
-  color: var(--muted);
-  margin-left: 10px;
+  border-color: var(--line-strong);
+  color: var(--text);
+  background: rgba(168, 85, 247, 0.07);
 }
 
 .cta.secondary:hover {
-  border-color: var(--text);
-  background: transparent;
-  color: var(--text);
+  border-color: var(--purple);
+  background: rgba(168, 85, 247, 0.2);
+  color: #fff;
+  box-shadow: 0 8px 30px rgba(168, 85, 247, 0.25);
 }
 
+/* ---------- Stats ---------- */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin: 64px 0 0;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--line);
+}
+
+.stats div {
+  background: linear-gradient(170deg, rgba(26, 20, 38, 0.9), rgba(11, 9, 16, 0.95));
+  padding: 24px 20px;
+}
+
+.stats strong {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3.4vw, 2.1rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  background: linear-gradient(120deg, var(--gold-bright), var(--gold) 60%, var(--purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.stats span {
+  display: block;
+  margin-top: 8px;
+  color: var(--dim);
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+/* ---------- Sections ---------- */
+
 section {
-  padding: 56px 0;
+  padding: 72px 0;
   border-top: 1px solid var(--line);
 }
 
 section h2 {
-  font-family: Georgia, "Times New Roman", serif;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--mono);
   font-weight: 400;
-  font-size: 1.05rem;
-  letter-spacing: 0.02em;
-  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  margin: 0 0 28px;
+  color: var(--gold);
+  margin: 0 0 36px;
 }
 
-/* Work grid */
+section h2::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--line-strong), transparent);
+}
+
+/* ---------- Work ---------- */
 
 .work-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 18px;
 }
 
 .work-card {
-  display: block;
-  padding: 22px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 26px;
   border: 1px solid var(--line);
-  border-radius: 3px;
-  background: var(--surface);
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  border-radius: 16px;
+  background:
+    radial-gradient(600px circle at 90% -20%, rgba(168, 85, 247, 0.16), transparent 60%),
+    linear-gradient(165deg, var(--surface), rgba(11, 9, 16, 0.92));
+  overflow: hidden;
+  transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.work-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(140deg, rgba(227, 185, 95, 0.55), rgba(168, 85, 247, 0.5), transparent 70%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
 }
 
 .work-card:hover {
-  border-color: var(--accent);
+  border-color: transparent;
   text-decoration: none;
-  transform: translateY(-2px);
+  transform: translateY(-4px);
+  box-shadow: 0 24px 60px -24px rgba(124, 58, 237, 0.65);
+}
+
+.work-card:hover::before {
+  opacity: 1;
 }
 
 .work-card .meta {
-  color: var(--muted);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
+  color: var(--dim);
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 
 .work-card h3 {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-weight: 400;
-  font-size: 1.3rem;
-  margin: 0 0 8px;
+  font-size: 1.45rem;
+  line-height: 1.2;
+  margin: 0 0 10px;
   color: var(--text);
 }
 
 .work-card p {
   margin: 0;
   color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 0.94rem;
+  line-height: 1.65;
 }
 
-/* Awards */
+.work-card .card-link {
+  margin-top: 18px;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.work-card .card-link::after {
+  content: "â†’";
+  transition: transform 0.3s ease;
+}
+
+.work-card:hover .card-link::after {
+  transform: translateX(4px);
+}
+
+.work-card .card-links {
+  margin-top: 18px;
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.work-card.is-static:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.work-card.is-static .meta {
+  color: var(--purple);
+}
+
+/* ---------- Timeline ---------- */
+
+.timeline {
+  position: relative;
+  margin: 0;
+  padding: 0 0 0 26px;
+  list-style: none;
+  border-left: 1px solid var(--line);
+}
+
+.timeline li {
+  position: relative;
+  padding: 0 0 34px;
+}
+
+.timeline li:last-child {
+  padding-bottom: 0;
+}
+
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -32px;
+  top: 9px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--gold);
+  box-shadow: 0 0 14px rgba(227, 185, 95, 0.55);
+}
+
+.timeline .when {
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 6px;
+}
+
+.timeline h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.18rem;
+  margin: 0 0 4px;
+  color: var(--text);
+}
+
+.timeline .org {
+  display: block;
+  color: var(--gold);
+  font-size: 0.88rem;
+  margin-bottom: 8px;
+}
+
+.timeline p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+
+/* ---------- Awards / list ---------- */
 
 .awards {
   list-style: none;
@@ -218,9 +666,32 @@ section h2 {
 }
 
 .awards li {
-  padding: 14px 0;
+  position: relative;
+  padding: 16px 0 16px 22px;
   border-bottom: 1px solid var(--line);
   color: var(--muted);
+  font-size: 0.96rem;
+  transition: color 0.25s ease, padding-left 0.25s ease;
+}
+
+.awards li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 26px;
+  width: 8px;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.awards li:hover {
+  color: var(--text);
+  padding-left: 28px;
+}
+
+.awards li:hover::before {
+  width: 14px;
 }
 
 .awards li:last-child {
@@ -229,66 +700,59 @@ section h2 {
 
 .awards strong {
   color: var(--text);
-  font-weight: 500;
+  font-weight: 600;
 }
 
-/* Skills */
-
-.skills {
-  list-style: none;
-  padding: 0;
-  margin: 24px 0 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.skills li {
-  border: 1px solid var(--line);
-  color: var(--muted);
-  font-size: 0.8rem;
-  padding: 4px 10px;
-  border-radius: 2px;
-}
-
-.essay-item {
-  display: block;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.essay-item:last-child {
-  border-bottom: none;
-}
-
-.essay-item .meta {
-  color: var(--muted);
-  font-size: 0.82rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-
-.essay-item h3 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-weight: 400;
-  font-size: 1.5rem;
-  margin: 0 0 6px;
-  color: var(--text);
-}
-
-.essay-item p {
-  margin: 0;
-  color: var(--muted);
-}
+/* ---------- About ---------- */
 
 .about p {
   margin: 0 0 18px;
+  color: var(--muted);
+  max-width: 62ch;
 }
 
 .about p:last-child {
   margin-bottom: 0;
 }
+
+.about .quote {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  line-height: 1.5;
+  color: var(--text);
+  border-left: 2px solid var(--gold);
+  padding-left: 20px;
+  margin: 28px 0;
+}
+
+.skills {
+  list-style: none;
+  padding: 0;
+  margin: 28px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.skills li {
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  padding: 6px 13px;
+  border-radius: 999px;
+  background: rgba(168, 85, 247, 0.05);
+  transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.skills li:hover {
+  border-color: var(--purple);
+  color: var(--text);
+  transform: translateY(-2px);
+}
+
+/* ---------- Contact ---------- */
 
 .links {
   list-style: none;
@@ -297,11 +761,17 @@ section h2 {
 }
 
 .links li {
-  padding: 10px 0;
+  padding: 16px 0;
   border-bottom: 1px solid var(--line);
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
   gap: 16px;
+  transition: padding-left 0.3s ease;
+}
+
+.links li:hover {
+  padding-left: 8px;
 }
 
 .links li:last-child {
@@ -309,17 +779,50 @@ section h2 {
 }
 
 .links span {
-  color: var(--muted);
+  color: var(--dim);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
+
+/* ---------- Footer ---------- */
 
 footer.site {
-  padding: 40px 0 64px;
+  padding: 44px 0 72px;
   border-top: 1px solid var(--line);
-  color: var(--muted);
-  font-size: 0.82rem;
+  color: var(--dim);
+  font-size: 0.8rem;
 }
 
-/* Article */
+footer.site .wrap {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ---------- Reveal ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--d, 0ms);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+.hero .reveal:nth-child(1) { --d: 60ms; }
+.hero .reveal:nth-child(2) { --d: 160ms; }
+.hero .reveal:nth-child(3) { --d: 260ms; }
+.hero .reveal:nth-child(4) { --d: 360ms; }
+.hero .reveal:nth-child(5) { --d: 460ms; }
+
+/* ---------- Article (standalone pages) ---------- */
 
 article {
   padding: 72px 0 24px;
@@ -333,7 +836,7 @@ article .back {
 }
 
 article h1 {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-weight: 400;
   font-size: clamp(2rem, 5vw, 3rem);
   line-height: 1.12;
@@ -342,7 +845,7 @@ article h1 {
 }
 
 article .subtitle {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-style: italic;
   font-size: 1.25rem;
   color: var(--muted);
@@ -360,10 +863,18 @@ article .byline {
 }
 
 article h2 {
-  font-family: Georgia, "Times New Roman", serif;
+  display: block;
+  font-family: var(--serif);
   font-weight: 400;
   font-size: 1.6rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text);
   margin: 48px 0 16px;
+}
+
+article h2::after {
+  display: none;
 }
 
 article h2:first-of-type {
@@ -372,6 +883,7 @@ article h2:first-of-type {
 
 article p {
   margin: 0 0 22px;
+  color: var(--text);
 }
 
 article strong {
@@ -381,7 +893,7 @@ article strong {
 article blockquote {
   margin: 28px 0;
   padding-left: 20px;
-  border-left: 2px solid var(--accent);
+  border-left: 2px solid var(--gold);
   color: var(--muted);
   font-style: italic;
 }
@@ -410,51 +922,135 @@ article .refs li {
   margin-bottom: 10px;
 }
 
+/* ---------- Responsive ---------- */
+
+@media (max-width: 720px) {
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .stats div {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 20px;
+  }
+
+  .stats span {
+    margin-top: 0;
+    text-align: right;
+    max-width: 55%;
+  }
+}
+
 @media (max-width: 520px) {
   body {
     font-size: 17px;
   }
 
+  .wrap {
+    padding: 0 20px;
+  }
+
   .hero {
-    padding: 64px 0 48px;
+    padding: 72px 0 52px;
   }
 
   nav {
     gap: 14px;
+    font-size: 0.66rem;
   }
 
-  .work-grid {
-    grid-template-columns: 1fr;
+  section {
+    padding: 56px 0;
   }
 
-  .cta.secondary {
-    margin-left: 0;
-    margin-top: 10px;
+  .cta {
+    padding: 11px 18px;
+    font-size: 0.7rem;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .spotlight {
+    display: none;
   }
 }
 
 </style>
+  <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
 </head>
 <body>
+
+  <div class="aurora" aria-hidden="true">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <span class="blob b3"></span>
+  </div>
+  <div class="spotlight" aria-hidden="true"></div>
 
   <header class="site">
     <div class="wrap">
       <a class="brand" href="index.html">Alan Caicedo</a>
       <nav>
         <a href="#trabajo">Trabajo</a>
+        <a href="#experiencia">Experiencia</a>
+        <a href="#formacion">FormaciÃ³n</a>
         <a href="#sobre">Sobre mÃ­</a>
         <a href="#contacto">Contacto</a>
       </nav>
     </div>
+    <div class="progress"><span id="progressBar"></span></div>
   </header>
 
   <main class="wrap">
 
-    <section class="hero" style="border-top: none;">
-      <p class="kicker">Alan Sneyder Caicedo DÃ­az Â· Cali, Colombia</p>
-      <h1>Escribo sobre tecnologÃ­a, atenciÃ³n y poder. TambiÃ©n construyo sistemas de IA.</h1>
-      <p class="lede">Portafolio de proyectos de datos e inteligencia artificial. Programo en Python; construyo herramientas reproducibles y transparentes sobre sus lÃ­mites.</p>
-      <a class="cta" href="#trabajo">Ver trabajo</a>
+    <section class="hero">
+      <p class="kicker reveal">Alan Sneyder Caicedo DÃ­az Â· Cali, Colombia</p>
+      <h1 class="reveal">Construyo sistemas de datos e IA <span class="grad">que se pueden auditar.</span></h1>
+      <p class="lede reveal">Tengo 17 aÃ±os. Programo en Python y construyo herramientas reproducibles sobre datos pÃºblicos: siniestralidad vial, bioacÃºstica y sistemas de IA en producciÃ³n. Cada proyecto incluye sus lÃ­mites y su trazabilidad.</p>
+      <div class="hero-actions reveal">
+        <a class="cta" href="#trabajo">Ver trabajo</a>
+        <a class="cta secondary" href="#contacto">Contacto</a>
+      </div>
+      <div class="stats reveal">
+        <div>
+          <strong data-count="51236" data-format="es">51.236</strong>
+          <span>Registros de siniestralidad analizados</span>
+        </div>
+        <div>
+          <strong data-count="9261" data-format="es">9.261</strong>
+          <span>Cruces viales evaluados</span>
+        </div>
+        <div>
+          <strong data-count="16">16</strong>
+          <span>Pruebas automatizadas</span>
+        </div>
+      </div>
     </section>
 
     <section id="trabajo">
@@ -462,60 +1058,103 @@ article .refs li {
 
       <div class="work-grid">
 
-        <a class="work-card" href="https://github.com/snkydzrpy/ciclorotocali">
-          <div class="meta">Proyecto Â· Hackathon Â· PÃºblico</div>
+        <article class="work-card reveal">
+          <div class="meta">Proyecto Â· Datos abiertos Â· PÃºblico</div>
           <h3>CicloRoto Vial</h3>
-          <p>AnÃ¡lisis de siniestralidad vial en Cali: 51,236 registros (2016â€“2025), ranking con Gammaâ€“Poisson y auditorÃ­a de trazabilidad. Streamlit, Python.</p>
-        </a>
+          <p>AnÃ¡lisis de siniestralidad vial en Cali: 51.236 registros (2016â€“2025), ranking de cruces crÃ­ticos con Gammaâ€“Poisson e intervalos de confianza del 95%. Incluye auditorÃ­a de trazabilidad de reportes ciudadanos.</p>
+          <div class="card-links">
+            <a class="card-link" href="https://github.com/snkydzrpy/ciclorotocali">Repositorio</a>
+            <a class="card-link" href="https://youtu.be/qj5ZTFfcUy8">Video demo</a>
+          </div>
+        </article>
 
-
-
-        <article class="work-card">
-          <div class="meta">Proyecto Â· Lidarit (NDA)</div>
+        <article class="work-card is-static reveal">
+          <div class="meta">Proyecto Â· NDA</div>
           <h3>Meeting AI Agent</h3>
           <p>Sistema en producciÃ³n para transcripciÃ³n de audio en vivo, diarizaciÃ³n de speakers y reportes automÃ¡ticos. Python, AWS y APIs de LLM.</p>
         </article>
 
-        <a class="work-card" href="https://birds-ai-cali.web.app/">
+        <a class="work-card reveal" href="https://birds-ai-cali.web.app/">
           <div class="meta">Proyecto Â· IA aplicada Â· En vivo</div>
           <h3>BirdsAI</h3>
-          <p>Monitoreo acÃºstico e identificaciÃ³n de aves. App web con Firebase + worker Python/Docker + BirdNET. Prototipo acadÃ©mico (SENA).</p>
+          <p>Monitoreo acÃºstico e identificaciÃ³n de aves. App web con Firebase + worker Python/Docker + BirdNET, con CI/CD en GitHub Actions. Proyecto de base tecnolÃ³gica (SENA / Tecnoparque).</p>
+          <div class="card-links">
+            <span class="card-link">Abrir app</span>
+          </div>
         </a>
 
-        <a class="work-card" href="https://github.com/snkydzrpy/Estudios-de-casos-tecnicos-e-informes-de-auditoria-de-sistemas-de-IA-en-produccion-bajo-entornos-NDA">
+        <a class="work-card reveal" href="https://github.com/snkydzrpy/Estudios-de-casos-tecnicos-e-informes-de-auditoria-de-sistemas-de-IA-en-produccion-bajo-entornos-NDA">
           <div class="meta">Repositorio Â· PÃºblico</div>
           <h3>Estudios de casos tÃ©cnicos</h3>
           <p>AuditorÃ­a de sistemas de IA en producciÃ³n bajo entornos NDA. Casos, hallazgos y criterios de evaluaciÃ³n.</p>
+          <div class="card-links">
+            <span class="card-link">Repositorio</span>
+          </div>
         </a>
 
       </div>
     </section>
 
+    <section id="experiencia">
+      <h2>Experiencia</h2>
+      <ol class="timeline">
+        <li class="reveal">
+          <div class="when">Abr 2026 â€” Oct 2026</div>
+          <h3>Desarrollador</h3>
+          <span class="org">SENA Â· Tecnoparque Nodo Valle</span>
+          <p>Desarrollo de BirdsAI: arquitectura desacoplada entre frontend, servicios Firebase y un worker de IA. AutenticaciÃ³n, reglas de seguridad, CI/CD con GitHub Actions y procesamiento asÃ­ncrono de audio con FFmpeg y BirdNET.</p>
+        </li>
+        <li class="reveal">
+          <div class="when">Sep 2025 â€” Ene 2026</div>
+          <h3>Programador full stack</h3>
+          <span class="org">LiDARit Â· Colombia</span>
+          <p>Backend y soporte de frontend en aplicaciones con IA. Servicios AWS (S3, Lambda, DynamoDB, CloudFront, API Gateway), procesamiento de datos con Python (Pandas, NumPy) y transcripciÃ³n en tiempo real con Deepgram y GPT-4o-mini. Proyectos: MAX y Meeting AI Agent.</p>
+        </li>
+        <li class="reveal">
+          <div class="when">Ago 2025 â€” Nov 2025</div>
+          <h3>Monitor acadÃ©mico</h3>
+          <span class="org">SENA Â· TÃ©cnico en Procesamiento de Datos para Modelos de IA</span>
+          <p>Seleccionado por el ComitÃ© de EvaluaciÃ³n y Seguimiento para la II Convocatoria 2025. AcompaÃ±amiento a aprendices en fundamentos de IA, Python, programaciÃ³n y anÃ¡lisis de datos.</p>
+        </li>
+      </ol>
+    </section>
 
     <section id="reconocimientos">
       <h2>Reconocimientos</h2>
       <ul class="awards">
-        <li><strong>SENA â€” DÃ­a de los Mejores 2025.</strong> DesempeÃ±o destacado en formaciÃ³n tÃ©cnica de inteligencia artificial.</li>
-        <li><strong>SENA â€” MonitorÃ­a acadÃ©mica 2025.</strong> Machine Learning, estadÃ­stica y modelado de datos.</li>
-        <li><strong>Centro de InnovaciÃ³n YAWA.</strong> Expositor de proyectos de IA y analÃ­tica de datos.</li>
+        <li class="reveal"><strong>Aprendiz Destacado SENA â€” TÃ©cnico PDIA.</strong> DistinciÃ³n en el DÃ­a de los Mejores 2025 por desempeÃ±o en formaciÃ³n tÃ©cnica de inteligencia artificial.</li>
+        <li class="reveal"><strong>SENA â€” MonitorÃ­a acadÃ©mica 2025.</strong> Machine Learning, estadÃ­stica y modelado de datos.</li>
+        <li class="reveal"><strong>Centro de InnovaciÃ³n YAWA y AI Salon Cali.</strong> Expositor de proyectos de IA y analÃ­tica de datos.</li>
+      </ul>
+    </section>
+
+    <section id="formacion">
+      <h2>FormaciÃ³n y certificaciones</h2>
+      <ul class="awards">
+        <li class="reveal"><strong>SENA â€” TÃ©cnico en Procesamiento de Datos para Modelos de IA.</strong> TÃ­tulo otorgado el 19/10/2026 (CEAI, Regional Valle), acta de grado 102987212. Verificable en certificados.sena.edu.co.</li>
+        <li class="reveal"><strong>SENA / ASTIN Tecnoparque Nodo Valle â€” Proyecto de base tecnolÃ³gica (PBT).</strong> Â«CaracterizaciÃ³n inteligente de entornos urbanos en Cali mediante identificaciÃ³n acÃºstica del canto de avesÂ» (cÃ³digo P2025-034320-18435). AcompaÃ±amiento: 09/02/2026 â€“ 10/10/2026.</li>
+        <li class="reveal"><strong>Excel intermedio.</strong> CertificaciÃ³n obtenida el 28/10/2026.</li>
+        <li class="reveal"><strong>SENA â€” Variables y Estructuras de Control en Python.</strong> Curso de 48 horas, aprobado con equivalencia 4.5 (dic 2025).</li>
+        <li class="reveal"><strong>SENA â€” Acogida Aprendices.</strong> ParticipaciÃ³n, 4 horas (mar 2025).</li>
       </ul>
     </section>
 
     <section id="sobre" class="about">
       <h2>Sobre mÃ­</h2>
-      <p>Tengo 17 aÃ±os y vivo en Cali, Colombia. Programo en Python y escribo sobre tecnologÃ­a, atenciÃ³n y poder.</p>
-      <p>Mi nombre completo es Alan Sneyder Caicedo DÃ­az.</p>
-      <p>He participado en proyectos de datos e inteligencia artificial, algunos bajo NDA. En 2025 recibÃ­ un reconocimiento del SENA en el DÃ­a de los Mejores y fui expositor en el Centro de InnovaciÃ³n YAWA.</p>
-      <p>Este sitio es el archivo de lo que pienso en serio, no el feed de lo que pienso rÃ¡pido.</p>
+      <p class="reveal">Tengo 17 aÃ±os y vivo en Cali, Colombia. Programo en Python y construyo sistemas de datos e inteligencia artificial: herramientas auditables, con pruebas y con lÃ­mites explÃ­citos.</p>
+      <p class="reveal">Mi nombre completo es Alan Sneyder Caicedo DÃ­az. TrabajÃ© en LiDARit (bajo NDA) y en el Tecnoparque Nodo Valle del SENA. En 2025 recibÃ­ la distinciÃ³n de Aprendiz Destacado y fui monitor acadÃ©mico del programa de IA.</p>
+      <p class="reveal quote">No me interesa la tecnologÃ­a que impresiona. Me interesa la que se puede verificar.</p>
 
-      <ul class="skills">
+      <ul class="skills reveal">
         <li>Python</li>
         <li>SQL</li>
+        <li>Pandas</li>
         <li>PyTorch</li>
         <li>TensorFlow</li>
         <li>scikit-learn</li>
         <li>AWS</li>
-        <li>Pandas</li>
+        <li>Firebase</li>
+        <li>Docker</li>
         <li>ETL</li>
       </ul>
     </section>
@@ -523,10 +1162,10 @@ article .refs li {
     <section id="contacto">
       <h2>Contacto</h2>
       <ul class="links">
-        <li><span>GitHub</span><a href="https://github.com/snkydzrpy">snkydzrpy</a></li>
-        <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/alan-sneyder-caicedo-diaz/">Alan Sneyder Caicedo DÃ­az</a></li>
-        <li><span>Email</span><a href="mailto:alansneydercaicedodiaz@gmail.com">alansneydercaicedodiaz@gmail.com</a></li>
-        <li><span>TelÃ©fono</span><a href="tel:+573332746127">3332746127</a></li>
+        <li class="reveal"><span>GitHub</span><a href="https://github.com/snkydzrpy">snkydzrpy</a></li>
+        <li class="reveal"><span>LinkedIn</span><a href="https://www.linkedin.com/in/alan-sneyder-caicedo-diaz/">Alan Sneyder Caicedo DÃ­az</a></li>
+        <li class="reveal"><span>Email</span><a href="mailto:alansneydercaicedodiaz@gmail.com">alansneydercaicedodiaz@gmail.com</a></li>
+        <li class="reveal"><span>TelÃ©fono</span><a href="tel:+573332746127">333 274 6127</a></li>
       </ul>
     </section>
 
@@ -534,9 +1173,88 @@ article .refs li {
 
   <footer class="site">
     <div class="wrap">
-      Â© 2026 Alan Sneyder Caicedo DÃ­az. Todos los textos son de mi autorÃ­a.
+      <span>Â© 2026 Alan Sneyder Caicedo DÃ­az</span>
+      <span>Cali, Colombia</span>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var progressBar = document.getElementById("progressBar");
+      var header = document.querySelector("header.site");
+
+      function onScroll() {
+        var h = document.documentElement;
+        var max = h.scrollHeight - h.clientHeight;
+        var p = max > 0 ? h.scrollTop / max : 0;
+        if (progressBar) progressBar.style.transform = "scaleX(" + p + ")";
+        if (header) header.classList.toggle("scrolled", h.scrollTop > 24);
+      }
+
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      // Reveal on scroll
+      var items = document.querySelectorAll(".reveal");
+      if (reduced || !("IntersectionObserver" in window)) {
+        items.forEach(function (el) { el.classList.add("in"); });
+      } else {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in");
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+        items.forEach(function (el) { io.observe(el); });
+      }
+
+      // Pointer spotlight
+      var spot = document.querySelector(".spotlight");
+      if (spot && !reduced && window.matchMedia("(hover: hover)").matches) {
+        var raf = null;
+        window.addEventListener("mousemove", function (e) {
+          if (raf) return;
+          raf = requestAnimationFrame(function () {
+            spot.style.setProperty("--mx", e.clientX + "px");
+            spot.style.setProperty("--my", e.clientY + "px");
+            raf = null;
+          });
+        }, { passive: true });
+      }
+
+      // Count-up stats
+      var counters = document.querySelectorAll("[data-count]");
+      function animate(el) {
+        var target = parseInt(el.getAttribute("data-count"), 10);
+        var fmt = el.getAttribute("data-format") === "es";
+        var start = null;
+        var dur = 1400;
+        function step(ts) {
+          if (!start) start = ts;
+          var t = Math.min((ts - start) / dur, 1);
+          var eased = 1 - Math.pow(1 - t, 3);
+          var val = Math.round(target * eased);
+          el.textContent = fmt ? val.toLocaleString("es-CO") : String(val);
+          if (t < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+      if (!reduced && "IntersectionObserver" in window) {
+        var co = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              animate(entry.target);
+              co.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.6 });
+        counters.forEach(function (el) { co.observe(el); });
+      }
+    })();
+  </script>
 
 </body>
 </html>
