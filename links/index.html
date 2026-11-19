@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#08070b">
+  <meta name="theme-color" content="#050408">
   <meta name="description" content="Links de @snkydzr.py">
   <meta property="og:title" content="@snkydzr.py">
   <meta property="og:description" content="Links">
@@ -11,20 +11,20 @@
   <title>@snkydzr.py</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Mono:wght@400;500&family=Permanent+Marker&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
-  <div class="orb orb-pink" aria-hidden="true"></div>
-  <div class="orb orb-blue" aria-hidden="true"></div>
+  <div class="ambient ambient-pink" aria-hidden="true"></div>
+  <div class="ambient ambient-purple" aria-hidden="true"></div>
+  <div class="ambient ambient-blue" aria-hidden="true"></div>
   <main class="page">
     <header class="masthead">
-      <div class="xo" aria-label="XO">X<span>O</span></div>
+      <div class="tag" aria-label="BP.XO"><span>BP.</span><span class="tag-xo">XO</span></div>
       <div class="handle">@snkydzr.py</div>
       <div class="rule" aria-hidden="true"><i></i><i></i><i></i></div>
     </header>
-
     <nav class="links" aria-label="Links">
       <a class="link link-gh" href="https://github.com/snkydzrpy" target="_blank" rel="noopener noreferrer">
         <span class="index">01</span><span class="name">GitHub</span><span class="symbol" aria-hidden="true">↗</span>
@@ -42,8 +42,28 @@
         <span class="index">05</span><span class="name">Substack</span><span class="symbol" aria-hidden="true">↗</span>
       </a>
     </nav>
-
-    <div class="bottom-mark" aria-hidden="true"><span>XO</span><span class="slashes">///</span><span>FCB</span></div>
   </main>
+  <script>
+    (() => {
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const finePointer = window.matchMedia('(pointer: fine)').matches;
+      if (reduced || !finePointer) return;
+      let last = 0;
+      const colors = ['#f3a5d0', '#c58be8', '#8d6bd1', '#e8b6dc'];
+      document.addEventListener('pointermove', (event) => {
+        const now = performance.now();
+        if (now - last < 34) return;
+        last = now;
+        const spark = document.createElement('span');
+        spark.className = 'cursor-spark';
+        spark.textContent = Math.random() > .5 ? '✦' : '✧';
+        spark.style.left = event.clientX + 'px';
+        spark.style.top = event.clientY + 'px';
+        spark.style.setProperty('--spark-color', colors[Math.floor(Math.random() * colors.length)]);
+        document.body.appendChild(spark);
+        spark.addEventListener('animationend', () => spark.remove(), { once: true });
+      }, { passive: true });
+    })();
+  </script>
 </body>
 </html>
