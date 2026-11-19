@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  color-scheme: dark;
+  --bg: #080610;
+  --text: #f3edf9;
+  --muted: #aaa0b8;
+  --purple: #bd8aff;
+  --line: rgba(195, 153, 255, .2);
+  --panel: rgba(22, 15, 34, .76);
+}
+* { box-sizing: border-box; }
+html { min-height: 100%; }
+body {
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(112, 48, 171, .22), transparent 48%),
+    var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  line-height: 1.6;
+}
+a { color: inherit; text-decoration: none; }
+a:focus-visible { outline: 2px solid var(--purple); outline-offset: 5px; }
+.ambient {
+  position: fixed;
+  z-index: -1;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: .2;
+  pointer-events: none;
+}
+.ambient-one { top: 12%; left: -220px; background: #8d42dc; }
+.ambient-two { right: -220px; bottom: 5%; background: #3b65c9; }
+.page { width: min(100% - 36px, 560px); margin: 0 auto; padding: 34px 0 26px; }
+.back {
+  display: inline-block;
+  color: var(--muted);
+  font: 12px 'DM Mono', monospace;
+  letter-spacing: .04em;
+  transition: color .2s ease;
+}
+.back:hover { color: var(--text); }
+.profile { padding: 62px 8px 34px; text-align: center; }
+.avatar {
+  display: grid;
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 22px;
+  place-items: center;
+  border: 1px solid rgba(214, 180, 255, .5);
+  border-radius: 25px;
+  background: linear-gradient(145deg, #2c1943, #100b1b 70%);
+  box-shadow: 0 12px 55px rgba(132, 65, 209, .22), inset 0 0 24px rgba(189, 138, 255, .1);
+  color: #e9d5ff;
+  font: 500 30px 'DM Mono', monospace;
+}
+.eyebrow {
+  margin: 0 0 14px;
+  color: var(--purple);
+  font: 11px 'DM Mono', monospace;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+h1 {
+  margin: 0;
+  font-size: clamp(2.2rem, 8vw, 3.4rem);
+  line-height: 1.08;
+  letter-spacing: -.055em;
+  font-weight: 600;
+}
+h1 span {
+  background: linear-gradient(100deg, #e9d5ff, #b47af5 55%, #8a9bff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.intro { max-width: 390px; margin: 18px auto 0; color: var(--muted); font-size: 15px; }
+.links { display: grid; gap: 12px; }
+.link-card {
+  display: flex;
+  min-height: 76px;
+  align-items: center;
+  gap: 15px;
+  padding: 14px 17px;
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  background: var(--panel);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, .12);
+  backdrop-filter: blur(14px);
+  transition: transform .22s ease, border-color .22s ease, background .22s ease;
+}
+.link-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(203, 163, 255, .62);
+  background: rgba(39, 25, 58, .9);
+}
+.link-card.featured {
+  border-color: rgba(190, 139, 255, .55);
+  background: linear-gradient(110deg, rgba(93, 47, 133, .45), rgba(22, 15, 34, .88));
+}
+.link-icon {
+  display: grid;
+  flex: 0 0 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid rgba(195, 153, 255, .22);
+  border-radius: 13px;
+  background: rgba(170, 111, 232, .12);
+  color: #dec3ff;
+  font: 11px 'DM Mono', monospace;
+}
+.link-copy { display: grid; flex: 1; gap: 1px; }
+.link-copy strong { font-size: 15px; font-weight: 600; }
+.link-copy small { color: var(--muted); font-size: 12px; }
+.arrow { color: var(--purple); font-size: 19px; transition: transform .2s ease; }
+.link-card:hover .arrow { transform: translate(2px, -2px); }
+footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 42px;
+  padding-top: 19px;
+  border-top: 1px solid rgba(195, 153, 255, .12);
+  color: #786f85;
+  font: 10px 'DM Mono', monospace;
+}
+@media (max-width: 420px) {
+  .profile { padding-top: 48px; }
+  footer { flex-direction: column; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
