@@ -81,10 +81,15 @@ body {
   gap: 12px;
   overflow: hidden;
   padding: 0 18px;
-  border: 1px solid transparent;
-  background:
-    linear-gradient(112deg, #103b7d 0%, #102d63 34%, #3b1d50 63%, #8d173b 100%) padding-box,
-    linear-gradient(112deg, #4d8cff, #9e173d) border-box;
+  border: 1px solid rgba(151, 157, 205, .2);
+  background: linear-gradient(108deg,
+    #123d78 0%,
+    #0b0b13 24%,
+    #09080e 43%,
+    #170d1b 62%,
+    #351329 79%,
+    #8e1e3c 100%
+  );
   box-shadow: 0 9px 28px rgba(0, 0, 0, .38), inset 0 0 34px rgba(0, 0, 0, .38);
   transition: transform .22s ease, box-shadow .22s ease, filter .22s ease;
 }
