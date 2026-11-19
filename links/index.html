@@ -49,7 +49,7 @@
       const finePointer = window.matchMedia('(pointer: fine)').matches;
       if (reduced || !finePointer) return;
       let last = 0;
-      const colors = ['#f3a5d0', '#c58be8', '#8d6bd1', '#e8b6dc'];
+      const colors = ['#4d8cff', '#8d6bd1', '#dce8ff', '#a72e52'];
       document.addEventListener('pointermove', (event) => {
         const now = performance.now();
         if (now - last < 34) return;
