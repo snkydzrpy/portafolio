@@ -226,6 +226,6 @@ a:focus-visible { outline: 2px solid var(--pink); outline-offset: 5px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: .01ms !important; animation: none !important; }
-  .smoke-field { display: none; }
+  .smoke-field { opacity: .42; }
 }
 @media (pointer: coarse) { body { cursor: auto; } }
